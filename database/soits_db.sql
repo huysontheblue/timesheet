@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2022 at 04:42 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Nov 05, 2020 at 09:55 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `soits_db`
 --
-CREATE DATABASE IF NOT EXISTS `soits_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `soits_db`;
 
 -- --------------------------------------------------------
 
@@ -90,8 +88,30 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `name`, `address`, `contact`, `course_id`, `company_id`, `id_no`, `password`, `status`, `required_duration`) VALUES
-(1, 'Hà Huy Sơn', 'vinh', '0388580624', 1, 1, '123456', '1254737c076cf867dc53d60a0364f38e', 0, '600'),
-(2, 'kiên', 'Hà Tĩnh', '123456789', 2, 2, '20140623', '4744ddea876b11dcb1d169fadf494418', 0, '600');
+(1, 'John Smith', 'Sample Address', '+18456-5455-55', 1, 1, '123456', '1254737c076cf867dc53d60a0364f38e', 0, '600'),
+(2, 'Claire Blake', 'Sample only', '8747808787', 2, 2, '20140623', '4744ddea876b11dcb1d169fadf494418', 0, '600');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_settings`
+--
+
+CREATE TABLE `system_settings` (
+  `id` int(30) NOT NULL,
+  `name` text NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `contact` varchar(20) NOT NULL,
+  `cover_img` text NOT NULL,
+  `about_content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `system_settings`
+--
+
+INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `cover_img`, `about_content`) VALUES
+(1, 'Students Online Internship Timesheet System', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -139,9 +159,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `type`) VALUES
-(1, 'admin', 'admin', '0192023a7bbd73250516f069df18b500', 1),
-(2, 'Hà Huy Sơn', 'son', '498d3c6bfa033f6dc1be4fcc3c370aa7', 2),
-(3, 'Sơn Huy', 'kientrung', '5d2297b2f56654636090aaad75d0578f', 2);
+(1, 'admin', 'admin', '0192023a7bbd73250516f069df18b500', 1);
 
 --
 -- Indexes for dumped tables
@@ -163,6 +181,12 @@ ALTER TABLE `courses`
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `system_settings`
+--
+ALTER TABLE `system_settings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -200,6 +224,12 @@ ALTER TABLE `students`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `system_settings`
+--
+ALTER TABLE `system_settings`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `timesheets`
 --
 ALTER TABLE `timesheets`
@@ -209,7 +239,7 @@ ALTER TABLE `timesheets`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
