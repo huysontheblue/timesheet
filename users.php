@@ -1,13 +1,11 @@
-<?php 
-
-?>
 
 <div class="container-fluid">
-	
 	<div class="row">
-	<div class="col-lg-12">
-			<button class="btn btn-primary float-right btn-sm" id="new_user"><i class="fa fa-plus"></i> Thêm tài khoản</button>
-	</div>
+		<div class="col-lg-12">
+			<button class="btn btn-primary float-right btn-sm" id="new_user">
+				<i class="fa fa-plus"></i> Thêm tài khoản
+			</button>
+		</div>
 	</div>
 	<br>
 	<div class="col-lg-12">
@@ -51,7 +49,7 @@
 							<div class="btn-group">
 							  <button type="button" class="btn btn-primary btn-sm">Action</button>
 							  <button type="button" class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    <span class="sr-only">Toggle Dropdown</span>
+							    <span class="sr-only"></span>
 							  </button>
 							  <div class="dropdown-menu">
 							    <a class="dropdown-item edit_user" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>Sửa</a>
@@ -65,21 +63,18 @@
 				<?php endwhile; ?>
 			</tbody>
 		</table>
-			</div>
-		</div>
 	</div>
-
 </div>
 <script>
 	$('table').dataTable();
 $('#new_user').click(function(){
-	uni_modal('New User','manage_user.php')
+	uni_modal('Tài khoản mới','manage_user.php')
 })
 $('.edit_user').click(function(){
-	uni_modal('Edit User','manage_user.php?id='+$(this).attr('data-id'))
+	uni_modal('Sửa tài khoản','manage_user.php?id='+$(this).attr('data-id'))
 })
 $('.delete_user').click(function(){
-		_conf("Are you sure to delete this user?","delete_user",[$(this).attr('data-id')])
+		_conf("Bạn có chắc chắn xóa tài khoản này không?","delete_user",[$(this).attr('data-id')])
 	})
 	function delete_user($id){
 		start_load()
@@ -89,7 +84,7 @@ $('.delete_user').click(function(){
 			data:{id:$id},
 			success:function(resp){
 				if(resp==1){
-					alert_toast("Data successfully deleted",'success')
+					alert_toast("Đã xóa dữ liệu thành công",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)

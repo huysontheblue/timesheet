@@ -1,16 +1,15 @@
 <?php 
-include('db_connect.php');
-session_start();
-if(isset($_GET['id'])){
-$user = $conn->query("SELECT * FROM users where id =".$_GET['id']);
-foreach($user->fetch_array() as $k =>$v){
-	$meta[$k] = $v;
-}
-}
+	include('db_connect.php');
+	session_start();
+	if(isset($_GET['id'])){
+		$user = $conn->query("SELECT * FROM users where id =".$_GET['id']);
+		foreach($user->fetch_array() as $k =>$v){
+			$meta[$k] = $v;
+		}
+	}
 ?>
 <div class="container-fluid">
-	<div id="msg"></div>
-	
+	<div id="msg"></div>	
 	<form action="" id="manage-user">	
 		<input type="hidden" name="id" value="<?php echo isset($meta['id']) ? $meta['id']: '' ?>">
 		<div class="form-group">
@@ -56,7 +55,7 @@ foreach($user->fetch_array() as $k =>$v){
 			data:$(this).serialize(),
 			success:function(resp){
 				if(resp ==1){
-					alert_toast("Đã lưu dữ liệu thành công",'success')
+					alert_toast("Đã thêm liệu thành công",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)

@@ -49,21 +49,20 @@
   <script type="text/javascript" src="assets/wysiwyg/js/plugins/special_characters.min.js"></script>
   <script type="text/javascript" src="assets/wysiwyg/js/plugins/word_paste.min.js"></script>
 <?php
-include 'db_connect.php';
-$qry = $conn->query("SELECT * from system_settings limit 1");
-if($qry->num_rows > 0){
-	foreach($qry->fetch_array() as $k => $val){
-		$meta[$k] = $val;
+	include 'db_connect.php';
+	$qry = $conn->query("SELECT * from system_settings limit 1");
+	if($qry->num_rows > 0){
+		foreach($qry->fetch_array() as $k => $val){
+			$meta[$k] = $val;
+		}
 	}
-}
- ?>
+?>
 <div class="container-fluid">
-	
 	<div class="card col-lg-12">
 		<div class="card-body">
 			<form action="" id="manage-settings">
 				<div class="form-group">
-					<label for="name" class="control-label">System Name</label>
+					<label for="name" class="control-label">Tên hệ thống</label>
 					<input type="text" class="form-control" id="name" name="name" value="<?php echo isset($meta['name']) ? $meta['name'] : '' ?>" required>
 				</div>
 				<div class="form-group">
@@ -71,33 +70,28 @@ if($qry->num_rows > 0){
 					<input type="email" class="form-control" id="email" name="email" value="<?php echo isset($meta['email']) ? $meta['email'] : '' ?>" required>
 				</div>
 				<div class="form-group">
-					<label for="contact" class="control-label">Contact</label>
+					<label for="contact" class="control-label">Liên hệ</label>
 					<input type="text" class="form-control" id="contact" name="contact" value="<?php echo isset($meta['contact']) ? $meta['contact'] : '' ?>" required>
 				</div>
 				<div class="form-group">
-					<label for="about" class="control-label">About Content</label>
+					<label for="about" class="control-label">Nội dung giới thiệu</label>
 					<textarea name="about" class="text-jqte" id="page_content"><?php echo isset($meta['about_content']) ? $meta['about_content'] : '' ?></textarea>
 
 				</div>
 				<div class="form-group">
-					<label for="" class="control-label">Image</label>
+					<label for="" class="control-label">Ảnh</label>
 					<input type="file" class="form-control" name="img" onchange="displayImg(this,$(this))">
 				</div>
 				<div class="form-group">
 					<img src="<?php echo isset($meta['cover_img']) ? 'assets/uploads/'.$meta['cover_img'] :'' ?>" alt="" id="cimg">
 				</div>
 				<center>
-					<button class="btn btn-info btn-primary btn-block col-md-2">Save</button>
+					<button class="btn btn-info btn-primary btn-block col-md-2">Lưu</button>
 				</center>
 			</form>
 		</div>
 	</div>
-	<style>
-	img#cimg{
-		max-height: 10vh;
-		max-width: 6vw;
-	}
-</style>
+</div>
 
 <script>
 	function displayImg(input,_this) {
@@ -150,7 +144,7 @@ if($qry->num_rows > 0){
 			},
 			success:function(resp){
 				if(resp == 1){
-					alert_toast('Data successfully saved.','success')
+					alert_toast('Lưu thành công','success')
 					setTimeout(function(){
 						location.reload()
 					},1000)
@@ -161,6 +155,8 @@ if($qry->num_rows > 0){
 	})
 </script>
 <style>
-	
+	img#cimg{
+		max-height: 10vh;
+		max-width: 6vw;
+	}
 </style>
-</div>

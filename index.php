@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title><?php echo isset($_SESSION['system']['name']) ? $_SESSION['system']['name'] : '' ?></title>
+  <title>Hệ thống châm công thực tập</title>
  	
 
 <?php
@@ -21,7 +21,7 @@
 </head>
 <style>
 	body{
-        background: #80808045;
+    background: #80808045;
   }
   .modal-dialog.large {
     width: 80% !important;
@@ -40,13 +40,13 @@
     border: unset;
     font-size: 27px;
     top: 0;
-}
-#viewer_modal .modal-dialog {
+  }
+  #viewer_modal .modal-dialog {
         width: 80%;
     max-width: unset;
     height: calc(90%);
     max-height: unset;
-}
+  }
   #viewer_modal .modal-content {
        background: black;
     border: unset;
@@ -61,7 +61,7 @@
   }
 
 
-span.select2-selection.select2-selection--single {
+  span.select2-selection.select2-selection--single {
     min-height: 2rem;
   }
 </style>
@@ -94,8 +94,8 @@ span.select2-selection.select2-selection--single {
         <div id="delete_content"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='confirm' onclick="">Continue</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='confirm' onclick="">Tiếp tục</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở ra</button>
       </div>
       </div>
     </div>
@@ -109,8 +109,8 @@ span.select2-selection.select2-selection--single {
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Lưu</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
       </div>
       </div>
     </div>

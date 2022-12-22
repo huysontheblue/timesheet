@@ -1,7 +1,5 @@
 <?php include('db_connect.php');?>
-
-<div class="container-fluid">
-	
+<div class="container-fluid">	
 	<div class="col-lg-12">
 		<div class="row">
 			<!-- FORM Panel -->
@@ -45,7 +43,7 @@
 			<div class="col-md-8">
 				<div class="card">
 					<div class="card-header">
-						<b>Company List</b>
+						<b>Danh sách công ty</b>
 					</div>
 					<div class="card-body">
 						<table class="table table-bordered table-hover">
@@ -85,15 +83,6 @@
 	</div>	
 
 </div>
-<style>
-	
-	td{
-		vertical-align: middle !important;
-	}
-	td p {
-		margin:unset;
-	}
-</style>
 <script>
 	$('#manage-company').on('reset',function(){
 		$('input:hidden').val('')
@@ -113,14 +102,14 @@
 		    type: 'POST',
 			success:function(resp){
 				if(resp==1){
-					alert_toast("Data successfully added",'success')
+					alert_toast("Thêm công ty thành công",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)
 
 				}
 				else if(resp==2){
-					$('#msg').html('<div class="alert alert-danger">Company already exist.</div>')
+					$('#msg').html('<div class="alert alert-danger">Công ty đã tồn tại</div>')
 					end_load()
 
 				}
@@ -138,7 +127,7 @@
 		end_load()
 	})
 	$('.delete_company').click(function(){
-		_conf("Are you sure to delete this company?","delete_company",[$(this).attr('data-id')])
+		_conf("Bạn có chắc chắn xóa công ty này?","delete_company",[$(this).attr('data-id')])
 	})
 	function delete_company($id){
 		start_load()
@@ -148,7 +137,7 @@
 			data:{id:$id},
 			success:function(resp){
 				if(resp==1){
-					alert_toast("Data successfully deleted",'success')
+					alert_toast("Xóa thành công!!!",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)
@@ -159,3 +148,11 @@
 	}
 	$('table').dataTable()
 </script>
+<style>
+	td{
+		vertical-align: middle !important;
+	}
+	td p {
+		margin:unset;
+	}
+</style>

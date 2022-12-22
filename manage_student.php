@@ -13,25 +13,25 @@ if(isset($_GET['id'])){
 		<div class="col-lg-12">
 			<div class="row">
 				<div class="col-md-6 border-right">
-					<b class="text-muted">Student Informations</b>
+					<b class="text-muted">Thông tin sinh viên</b>
 					<div class="form-group">
-						<label class="label control-label">Student ID No.</label>
+						<label class="label control-label">Mã số sinh viên</label>
 						<input type="text" class="form-control form-control-sm w-100" name="id_no" required="" value="<?php echo isset($id_no) ? $id_no : '' ?>">
 					</div>
 					<div class="form-group">
-						<label class="label control-label">Name</label>
+						<label class="label control-label">Tên</label>
 						<input type="text" class="form-control form-control-sm w-100" name="name" required="" value="<?php echo isset($name) ? $name : '' ?>">
 					</div>
 					<div class="form-group">
-						<label class="label control-label">Contact</label>
+						<label class="label control-label">Liên hệ</label>
 						<input type="text" class="form-control form-control-sm w-100" name="contact" required="" value="<?php echo isset($contact) ? $contact : '' ?>">
 					</div>
 					<div class="form-group">
-						<label class="label control-label">Address</label>
+						<label class="label control-label">Địa chỉ</label>
 						<textarea name="address" id="" cols="30" rows="3" class="form-control" required=""><?php echo isset($address) ? $address : '' ?></textarea>
 					</div>
 					<div class="form-group">
-						<label class="label control-label">Course</label>
+						<label class="label control-label">Khóa thực tập</label>
 						<select name="course_id" id="" class="custom-select custom-select-sm select2" required>
 							<option value=""></option>
 							<?php
@@ -44,9 +44,9 @@ if(isset($_GET['id'])){
 					</div>
 				</div>
 				<div class="col-md-6">
-					<b class="text-muted">Internship Details</b>
+					<b class="text-muted">Chi tiết thực tập</b>
 					<div class="form-group">
-						<label class="label control-label">Company</label>
+						<label class="label control-label">Công ty</label>
 						<select name="company_id" id="" class="custom-select custom-select-sm select2" required>
 							<option value=""></option>
 							<?php
@@ -58,19 +58,19 @@ if(isset($_GET['id'])){
 						</select>
 					</div>
 					<div class="form-group">
-						<label class="label control-label">Required Duration (hr.)</label>
+						<label class="label control-label">Thời lượng yêu cầu(giờ)</label>
 						<input type="text" class="form-control form-control-sm w-100" name="required_duration" value="<?php echo isset($required_duration) ? $required_duration : '' ?>">
 					</div>
-					<b class="text-muted">System Credential</b>
+					<b class="text-muted">Thông tin đăng nhập hệ thống</b>
 					<div class="form-group">
-						<label class="label control-label">Password</label>
+						<label class="label control-label">Mật khẩu</label>
 						<input type="password" class="form-control form-control-sm w-100" name="password" <?php echo isset($id) ? 'required' : '' ?>>
 						<?php if(isset($id)): ?>
-						<small>Leave this blank if you don't want to change the password</small>
+						<small>Để trống nếu bạn không muốn thay đổi mật khẩu</small>
 						<?php endif; ?>
 					</div>
 					<div class="form-group">
-						<label class="label control-label">Confirm Password</label>
+						<label class="label control-label">Xác nhận mật khẩu</label>
 						<input type="password" class="form-control form-control-sm w-100" name="cpass" <?php echo isset($id) ? 'required' : '' ?>>
 						<small id="pass_match" data-status=''></small>
 					</div>
@@ -89,9 +89,9 @@ if(isset($_GET['id'])){
 			$('#pass_match').attr('data-status','')
 		}else{
 			if(cpass == pass){
-				$('#pass_match').attr('data-status','1').html('<i class="text-success">Password Matched.</i>')
+				$('#pass_match').attr('data-status','1').html('<i class="text-success">Mật khẩu phù hợp.</i>')
 			}else{
-				$('#pass_match').attr('data-status','2').html('<i class="text-danger">Password does not match.</i>')
+				$('#pass_match').attr('data-status','2').html('<i class="text-danger">Mật khẩu không hợp lệ.</i>')
 			}
 		}
 	})
@@ -113,12 +113,12 @@ if(isset($_GET['id'])){
 			data:$(this).serialize(),
 			success:function(resp){
 				if(resp == 1){
-					alert_toast('Data successfully saved.',"success");
+					alert_toast('Lưu thành công',"success");
 					setTimeout(function(){
 						location.reload()
 					},750)
 				}else if(resp == 2){
-					$('#msg').html("<div class='alert alert-danger'>ID Number already exist.</div>");
+					$('#msg').html("<div class='alert alert-danger'>Mã sinh viên đã tồn tại.</div>");
 					$('[name="id_no"]').addClass("border-danger")
 					end_load()
 				}

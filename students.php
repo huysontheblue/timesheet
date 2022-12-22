@@ -1,16 +1,14 @@
 <?php include('db_connect.php');?>
-
 <div class="container-fluid">
-	
 	<div class="col-lg-12">
 		<div class="row">
 			<!-- Table Panel -->
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<b>Student List</b>
+						<b>Danh sách sinh viên</b>
 						<span class="float:right"><a class="btn btn-primary btn-sm col-sm-3 float-right" href="javascript:void(0)" id="new_student">
-			                    <i class="fa fa-plus"></i> New 
+			                    <i class="fa fa-plus"></i> Thêm sinh viên 
 			                </a></span>
 					</div>
 					<div class="card-body">
@@ -18,7 +16,7 @@
 							<thead>
 								<tr>
 									<th class="text-center">#</th>
-									<th class="text-center">ID</th>
+									<th class="text-center">Mã sinh viên</th>
 									<th class="text-center">Thông tin sinh viên</th>
 									<th class="text-center">Khóa</th>
 									<th class="text-center">Thông tin thực tập</th>
@@ -51,7 +49,7 @@
 									</td>
 									<td class="">
 										<p>Công ty <b><?php echo $cname[$row['company_id']] ?></b></p>
-										<p><small>Thời lượng yêu cầu: <b><?php echo $row['required_duration'] ?> hrs.</b></small></p>
+										<p><small>Thời lượng yêu cầu: <b><?php echo $row['required_duration'] ?> giờ/tuần</b></small></p>
 									</td>
 									<td class="text-center">
 										<button class="btn btn-sm btn-primary edit_student" type="button" data-id="<?php echo $row['id'] ?>">Sửa</button>
@@ -69,27 +67,12 @@
 	</div>	
 
 </div>
-<style>
-	
-	td{
-		vertical-align: middle !important;
-	}
-	td p {
-		margin:unset;
-	}
-	.custom-switch{
-		cursor: pointer;
-	}
-	.custom-switch *{
-		cursor: pointer;
-	}
-</style>
 <script>
 	$('#new_student').click(function(){
-		uni_modal("New Student","manage_student.php","mid-large")
+		uni_modal("Sinh viên mới","manage_student.php","mid-large")
 	})
 	$('.edit_student').click(function(){
-		uni_modal("Manage Student Data","manage_student.php?id="+$(this).attr('data-id'),"mid-large")
+		uni_modal("Quản lý dữ liệu sinh viên","manage_student.php?id="+$(this).attr('data-id'),"mid-large")
 	})
 	$('#manage-student').on('reset',function(){
 		$('input:hidden').val('')
@@ -109,14 +92,14 @@
 		    type: 'POST',
 			success:function(resp){
 				if(resp==1){
-					alert_toast("Data successfully added",'success')
+					alert_toast("Thêm thành công",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)
 
 				}
 				else if(resp==2){
-					alert_toast("Data successfully updated",'success')
+					alert_toast("Cập nhật thành công",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)
@@ -126,7 +109,7 @@
 		})
 	})
 	$('.delete_student').click(function(){
-		_conf("Are you sure to delete this student?","delete_student",[$(this).attr('data-id')])
+		_conf("Bạn có muốn xóa sinh viên này?","delete_student",[$(this).attr('data-id')])
 	})
 	function delete_student($id){
 		start_load()
@@ -136,7 +119,7 @@
 			data:{id:$id},
 			success:function(resp){
 				if(resp==1){
-					alert_toast("Data successfully deleted",'success')
+					alert_toast("Xóa thành công",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)
@@ -147,3 +130,18 @@
 	}
 	$('table').dataTable()
 </script>
+
+<style>
+	td{
+		vertical-align: middle !important;
+	}
+	td p {
+		margin:unset;
+	}
+	.custom-switch{
+		cursor: pointer;
+	}
+	.custom-switch *{
+		cursor: pointer;
+	}
+</style>

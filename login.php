@@ -15,10 +15,7 @@ ob_end_flush();
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title><?php echo $_SESSION['system']['name'] ?></title>
- 	
-
 <?php include('./header.php'); ?>
 <?php 
 if(isset($_SESSION['login_id']))
@@ -47,7 +44,7 @@ header("location:index.php?page=home");
 <body class="bg-dark">
   	<main id="main" >
   		<div class="align-self-center w-100">
-			<h4 class="text-white text-center"><b> Hệ thống chấm công thực tập trực tuyến</b></h4>
+			<h4 class="text-white text-center"><b> Hệ thống chấm công thực tập</b></h4>
 			<div id="login-center" class="bg-dark row justify-content-center">
 				<div class="card col-md-4">
 					<div class="card-body">
@@ -64,7 +61,7 @@ header("location:index.php?page=home");
 								<label for="password" class="control-label">Loại người dùng</label>
 								<select name="type" id="" class="custom-select">
 									<option value="1">Admin</option>
-									<option value="1">Sinh viên</option>
+									<option value="2">Sinh viên</option>
 								</select>
 							</div>
 							<center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary">Đăng nhập</button></center>
@@ -82,7 +79,7 @@ header("location:index.php?page=home");
 <script>
 	$('#login-form').submit(function(e){
 		e.preventDefault()
-		$('#login-form button[type="button"]').attr('disabled',true).html('Logging in...');
+		$('#login-form button[type="button"]').attr('disabled',true).html('Đăng nhập...');
 		if($(this).find('.alert-danger').length > 0 )
 			$(this).find('.alert-danger').remove();
 		$.ajax({
@@ -91,15 +88,15 @@ header("location:index.php?page=home");
 			data:$(this).serialize(),
 			error:err=>{
 				console.log(err)
-		$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
+		$('#login-form button[type="button"]').removeAttr('disabled').html('Đăng nhập');
 
 			},
 			success:function(resp){
 				if(resp == 1){
 					location.href ='index.php?page=home';
 				}else{
-					$('#login-form').prepend('<div class="alert alert-danger">Username or password is incorrect.</div>')
-					$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
+					$('#login-form').prepend('<div class="alert alert-danger">Tên đăng nhập hoặc tài khoản của bạn không chính xác.</div>')
+					$('#login-form button[type="button"]').removeAttr('disabled').html('Đăng nhâp');
 				}
 			}
 		})

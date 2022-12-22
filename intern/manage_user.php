@@ -14,14 +14,14 @@ foreach($user->fetch_array() as $k =>$v){
 	<form action="" id="manage-user">	
 		<input type="hidden" name="id" value="<?php echo isset($meta['id']) ? $meta['id']: '' ?>">
 		<div class="form-group">
-			<label for="name">Name</label>
+			<label for="name">Tên</label>
 			<input type="text" name="name" id="name" class="form-control" value="<?php echo isset($meta['name']) ? $meta['name']: '' ?>" required readonly>
 		</div>
 		<div class="form-group">
-			<label for="password">Password</label>
+			<label for="password">Mật khẩu</label>
 			<input type="password" name="password" id="password" class="form-control" value="" autocomplete="off">
 			<?php if(isset($meta['id'])): ?>
-			<small><i>Leave this blank if you dont want to change the password.</i></small>
+			<small><i>Để trống nếu bạn không muốn thay đổi mật khẩu.</i></small>
 		<?php endif; ?>
 		</div>
 		
@@ -39,12 +39,12 @@ foreach($user->fetch_array() as $k =>$v){
 			data:$(this).serialize(),
 			success:function(resp){
 				if(resp ==1){
-					alert_toast("Data successfully saved",'success')
+					alert_toast("Đã lưu dữ liệu thành công",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)
 				}else{
-					$('#msg').html('<div class="alert alert-danger">Username already exist</div>')
+					$('#msg').html('<div class="alert alert-danger">Tên người dùng đã tồn tại</div>')
 					end_load()
 				}
 			}
